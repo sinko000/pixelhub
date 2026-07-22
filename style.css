@@ -1,148 +1,91 @@
-/* --- Ümumi Ayarlar --- */
-body {
-    background-color: #050509; /* Çox tünd mavi-qara fon */
-    color: #fff;
-    /* Piksel şrifti tətbiq olunur */
-    font-family: 'Press Start 2P', cursive; 
+/* --- Ümumi Sıfırlama və Simmetriya --- */
+* {
+    box-sizing: border-box;
     margin: 0;
-    padding: 20px;
-    display: flex;
+    padding: 0;
 }
 
-/* --- Başlıq Dizaynı --- */
-header {
-    text-align: center;
-    margin-bottom: 40px;
-    border-bottom: 2px solid #39ff14; /* Neon yaşıl xətt */
-    padding-bottom: 20px;
-}
-
-/* Glitch (Xətalı) Neon Effekti */
-.glitch {
-    position: relative;
-    color: #39ff14; /* Neon yaşıl */
-    font-size: 3rem;
-    text-shadow: 0 0 5px #39ff14, 0 0 20px #39ff14;
-}
-
-/* --- Neon Düymə Üslubu --- */
-.neon-btn {
-    background: transparent;
-    border: 2px solid #ff0059; /* Neon çəhrayı */
-    color: #ff0059;
+body {
+    background-color: #07070a; /* Çox tünd cyberpunk fon */
+    color: #ffffff;
     font-family: 'Press Start 2P', cursive;
-    padding: 10px 20px;
+    height: 100vh;
+    display: flex;
+    justify-content: center; /* Üfüqi mərkəzləşdirmə */
+    align-items: center;     /* Şaquli mərkəzləşdirmə */
+    overflow: hidden;
+}
+
+/* --- Ana Konteyner (Tam Mərkəz) --- */
+.welcome-container {
+    text-align: center;
+    max-width: 800px;
+    padding: 40px;
+    /* Neon çərçivə və kölgə */
+    background: rgba(16, 16, 26, 0.7);
+    border: 3px solid #00ffcc;
+    box-shadow: 0 0 25px rgba(0, 255, 204, 0.3), inset 0 0 25px rgba(0, 255, 204, 0.1);
+    border-radius: 10px;
+}
+
+/* --- Neon Başlıq --- */
+.neon-title {
+    font-size: 1.8rem;
+    color: #00ffcc;
+    text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 40px #00ffcc;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+/* --- Alt Yazı --- */
+.subtitle {
+    font-size: 0.8rem;
+    color: #ff007f;
+    text-shadow: 0 0 8px #ff007f;
+    margin-bottom: 40px;
+}
+
+/* --- 4 Seçənək Üçün Grid Sistemi (2x2 Simmetrik) --- */
+.options-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    justify-content: center;
+}
+
+/* --- Neon Seçim Düymələri --- */
+.neon-option-btn {
+    background: transparent;
+    border: 2px solid #ff007f;
+    color: #ff007f;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.8rem;
+    padding: 20px;
     cursor: pointer;
     transition: all 0.3s ease;
-    /* İlkin kölgə effekti */
-    box-shadow: 0 0 5px #ff0059, inset 0 0 5px #ff0059;
-}
-
-.neon-btn.small {
-    padding: 5px 10px;
-    font-size: 0.8rem;
-}
-
-/* Hover (Siçan üzərinə gələndə) Effekti */
-.neon-btn:hover {
-    background: #ff0059;
-    color: #050509;
-    /* Daha güclü parıltı */
-    box-shadow: 0 0 20px #ff0059, 0 0 40px #ff0059, inset 0 0 10px #ff0059;
-}
-
-/* --- Oyun Grid Sistemi --- */
-.game-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 30px;
-}
-
-/* Oyun Kartı Üslubu (Piksel çərçivə) */
-.game-card {
-    background: #10101a;
-    border: 4px solid #7000ff; /* Neon bənövşəyi çərçivə */
-    padding: 15px;
-    text-align: center;
-    transition: transform 0.3s ease;
-}
-
-.game-card:hover {
-    transform: translateY(-10px); /* Yuxarı qalxma effekti */
-    border-color: #39ff14; /* Hoverdə yaşıl çərçivəyə dönür */
-}
-
-.game-card img {
-    max-width: 100%;
-    height: 150px;
-    object-fit: cover;
-    image-rendering: pixelated; /* Şəklin piksel keyfiyyətini qoruyur */
-    border: 2px solid #fff;
-    margin-bottom: 10px;
-}
-
-.game-card h3 {
-    font-size: 1.2rem;
-    margin: 10px 0;
-}
-
-/* --- Çat Dizaynı (Yan panel) --- */
-#chat-sidebar {
-    width: 300px;
-    background: #080812;
-    border-left: 2px solid #00ffff; /* Neon mavi */
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    position: fixed;
-    right: 0;
-    top: 0;
-}
-
-.chat-header {
-    background: #00ffff;
-    color: #050509;
-    padding: 15px;
+    box-shadow: 0 0 10px #ff007f, inset 0 0 10px #ff007f;
+    border-radius: 5px;
     text-align: center;
 }
 
-#chat-messages {
-    flex: 1;
-    padding: 15px;
-    overflow-y: auto;
-    font-size: 0.7rem;
+/* Hover (Üzərinə gələndə parıldamaq) */
+.neon-option-btn:hover {
+    background: #ff007f;
+    color: #07070a;
+    box-shadow: 0 0 20px #ff007f, 0 0 40px #ff007f, inset 0 0 15px #ffffff;
+    transform: scale(1.05);
 }
 
-.chat-input {
-    display: flex;
-    padding: 10px;
-    border-top: 1px solid #00ffff;
-}
-
-#messageInput {
-    flex: 1;
-    background: transparent;
-    border: 1px solid #00ffff;
-    color: #fff;
-    padding: 5px;
-    font-family: monospace;
-}
-
-/* --- Responsive (Mobil üçün) --- */
-@media (max-width: 768px) {
-    body {
-        flex-direction: column;
-        padding-right: 20px;
+/* --- Mobil Uyğunluq --- */
+@media (max-width: 600px) {
+    .options-grid {
+        grid-template-columns: 1fr; /* Telefonda tək sütun olsun */
     }
-    #chat-sidebar {
-        width: 100%;
-        height: 300px;
-        position: relative;
-        border-left: none;
-        border-top: 2px solid #00ffff;
-        margin-top: 40px;
+    .neon-title {
+        font-size: 1.2rem;
     }
-    .glitch {
-        font-size: 1.5rem;
+    .welcome-container {
+        padding: 20px;
+        margin: 10px;
     }
 }
