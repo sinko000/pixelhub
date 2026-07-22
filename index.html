@@ -1,56 +1,31 @@
 <!DOCTYPE html>
-<html lang="az">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Piksel Oyunları Dünyası</title>
-    
-    <!-- Google Piksel Şrifti: Press Start 2P -->
+    <title>Pixel Games Hub</title>
+    <!-- Google Piksel Şrifti -->
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    
-    <!-- Öz CSS faylımızı əlaqələndiririk -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Saytın Başlığı -->
-    <header>
-        <h1 class="glitch" data-text="PİKSEL OYUNLARI">PİKSEL OYUNLARI</h1>
-        <p>Retro oyunlar, xəbərlər və canlı çat!</p>
-    </header>
+    <div class="welcome-container">
+        <!-- Tam Mərkəzdə Xoş Gəldin Yazısı -->
+        <h1 class="neon-title" data-text="WELCOME TO PIXEL HUB">WELCOME TO PIXEL HUB</h1>
+        
+        <!-- Axtarışa Başla düyməsi və ya başlıq -->
+        <p class="subtitle">CHOOSE A PLATFORM TO START SEARCHING</p>
 
-    <!-- Əsas Məlumat Bölməsi (Bura oyunları JS ilə dolduracağıq) -->
-    <main>
-        <div class="controls">
-            <input type="text" id="searchInput" placeholder="Oyun axtar...">
-            <button class="neon-btn">Axtar</button>
+        <!-- 4 Əsas Seçənək (Kнопка / Kart şəklində) -->
+        <div class="options-grid">
+            <button class="neon-option-btn" onclick="selectPlatform('pixelplanet')">pixelplanet.fun</button>
+            <button class="neon-option-btn" onclick="selectPlatform('pixuniverse')">pixuniverse</button>
+            <button class="neon-option-btn" onclick="selectPlatform('pixmap')">pixmap</button>
+            <button class="neon-option-btn" onclick="selectPlatform('pixelya')">pixelya</button>
         </div>
+    </div>
 
-        <div id="game-grid" class="game-grid">
-            <!-- Nümunə Oyun Kartı (Dizaynı yoxlamaq üçün) -->
-            <div class="game-card">
-                <img src="https://img.itch.zone/aW1hZ2UvMTgzMDY3Lzk1NjI5Ny5wbmc=/original/V6%2F5%2B9.png" alt="Oyun Şəkli">
-                <h3>Super Pixel Adventure</h3>
-                <p>Mükəmməl platforma oyunu.</p>
-                <button class="neon-btn small">Oyna</button>
-            </div>
-            <!-- Daha çox kart buraya əlavə olunacaq -->
-        </div>
-    </main>
-
-    <!-- Canlı Çat Bölməsi (Sonra Socket.io ilə işlədəcəyik) -->
-    <aside id="chat-sidebar">
-        <div class="chat-header">Canlı Çat</div>
-        <div id="chat-messages">
-            <div class="message"><strong>Admin:</strong> Xoş gəldiniz!</div>
-        </div>
-        <div class="chat-input">
-            <input type="text" id="messageInput" placeholder="Mesaj yaz...">
-            <button id="sendBtn">Göndər</button>
-        </div>
-    </aside>
-
-    <!-- Öz JS faylımızı əlaqələndiririk -->
     <script src="script.js"></script>
 </body>
 </html>
