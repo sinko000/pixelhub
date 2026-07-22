@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piksel Oyunları Dünyası</title>
+    
+    <!-- Google Piksel Şrifti: Press Start 2P -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    
+    <!-- Öz CSS faylımızı əlaqələndiririk -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Saytın Başlığı -->
+    <header>
+        <h1 class="glitch" data-text="PİKSEL OYUNLARI">PİKSEL OYUNLARI</h1>
+        <p>Retro oyunlar, xəbərlər və canlı çat!</p>
+    </header>
+
+    <!-- Əsas Məlumat Bölməsi (Bura oyunları JS ilə dolduracağıq) -->
+    <main>
+        <div class="controls">
+            <input type="text" id="searchInput" placeholder="Oyun axtar...">
+            <button class="neon-btn">Axtar</button>
+        </div>
+
+        <div id="game-grid" class="game-grid">
+            <!-- Nümunə Oyun Kartı (Dizaynı yoxlamaq üçün) -->
+            <div class="game-card">
+                <img src="https://img.itch.zone/aW1hZ2UvMTgzMDY3Lzk1NjI5Ny5wbmc=/original/V6%2F5%2B9.png" alt="Oyun Şəkli">
+                <h3>Super Pixel Adventure</h3>
+                <p>Mükəmməl platforma oyunu.</p>
+                <button class="neon-btn small">Oyna</button>
+            </div>
+            <!-- Daha çox kart buraya əlavə olunacaq -->
+        </div>
+    </main>
+
+    <!-- Canlı Çat Bölməsi (Sonra Socket.io ilə işlədəcəyik) -->
+    <aside id="chat-sidebar">
+        <div class="chat-header">Canlı Çat</div>
+        <div id="chat-messages">
+            <div class="message"><strong>Admin:</strong> Xoş gəldiniz!</div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="messageInput" placeholder="Mesaj yaz...">
+            <button id="sendBtn">Göndər</button>
+        </div>
+    </aside>
+
+    <!-- Öz JS faylımızı əlaqələndiririk -->
+    <script src="script.js"></script>
+</body>
+</html>
