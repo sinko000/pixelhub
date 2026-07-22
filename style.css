@@ -1,4 +1,3 @@
-/* --- Ümumi Sıfırlama və Simmetriya --- */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -6,60 +5,85 @@
 }
 
 body {
-    background-color: #07070a; /* Çox tünd cyberpunk fon */
+    background-color: #07070a;
     color: #ffffff;
     font-family: 'Press Start 2P', cursive;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
-    justify-content: center; /* Üfüqi mərkəzləşdirmə */
-    align-items: center;     /* Şaquli mərkəzləşdirmə */
-    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 20px;
 }
 
-/* --- Ana Konteyner (Tam Mərkəz) --- */
+/* Sağ Üst Admin Düyməsi */
+.admin-login-corner {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.admin-icon-btn {
+    background: transparent;
+    border: 2px solid #00ffcc;
+    color: #00ffcc;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.6rem;
+    padding: 10px 15px;
+    cursor: pointer;
+    box-shadow: 0 0 10px #00ffcc;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.3s;
+}
+
+.admin-icon-btn:hover {
+    background: #00ffcc;
+    color: #07070a;
+    box-shadow: 0 0 20px #00ffcc;
+}
+
+/* Ana Konteyner */
 .welcome-container {
     text-align: center;
-    max-width: 800px;
+    width: 100%;
+    max-width: 900px;
     padding: 40px;
-    /* Neon çərçivə və kölgə */
-    background: rgba(16, 16, 26, 0.7);
+    background: rgba(16, 16, 26, 0.85);
     border: 3px solid #00ffcc;
     box-shadow: 0 0 25px rgba(0, 255, 204, 0.3), inset 0 0 25px rgba(0, 255, 204, 0.1);
     border-radius: 10px;
 }
 
-/* --- Neon Başlıq --- */
 .neon-title {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     color: #00ffcc;
-    text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 40px #00ffcc;
+    text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc;
     margin-bottom: 20px;
     line-height: 1.5;
 }
 
-/* --- Alt Yazı --- */
 .subtitle {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     color: #ff007f;
     text-shadow: 0 0 8px #ff007f;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 
-/* --- 4 Seçənək Üçün Grid Sistemi (2x2 Simmetrik) --- */
 .options-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
-    justify-content: center;
 }
 
-/* --- Neon Seçim Düymələri --- */
 .neon-option-btn {
     background: transparent;
     border: 2px solid #ff007f;
     color: #ff007f;
     font-family: 'Press Start 2P', cursive;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     padding: 20px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -68,24 +92,171 @@ body {
     text-align: center;
 }
 
-/* Hover (Üzərinə gələndə parıldamaq) */
 .neon-option-btn:hover {
     background: #ff007f;
     color: #07070a;
-    box-shadow: 0 0 20px #ff007f, 0 0 40px #ff007f, inset 0 0 15px #ffffff;
-    transform: scale(1.05);
+    box-shadow: 0 0 20px #ff007f, 0 0 40px #ff007f;
+    transform: scale(1.02);
 }
 
-/* --- Mobil Uyğunluq --- */
-@media (max-width: 600px) {
-    .options-grid {
-        grid-template-columns: 1fr; /* Telefonda tək sütun olsun */
-    }
-    .neon-title {
-        font-size: 1.2rem;
-    }
-    .welcome-container {
-        padding: 20px;
-        margin: 10px;
-    }
+/* Modal (Popup) */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: #10101a;
+    border: 3px solid #00ffcc;
+    padding: 30px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 0 20px #00ffcc;
+    width: 350px;
+}
+
+.modal-content h2 {
+    font-size: 1rem;
+    color: #00ffcc;
+    margin-bottom: 20px;
+}
+
+.modal-content input {
+    width: 100%;
+    background: transparent;
+    border: 2px solid #ff007f;
+    color: #fff;
+    padding: 10px;
+    font-family: monospace;
+    margin-bottom: 20px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.neon-btn {
+    background: transparent;
+    border: 2px solid #00ffcc;
+    color: #00ffcc;
+    font-family: 'Press Start 2P', cursive;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-size: 0.6rem;
+    box-shadow: 0 0 8px #00ffcc;
+    transition: 0.3s;
+}
+
+.neon-btn.red {
+    border-color: #ff0059;
+    color: #ff0059;
+    box-shadow: 0 0 8px #ff0059;
+}
+
+.neon-btn:hover {
+    background: #00ffcc;
+    color: #000;
+}
+
+.neon-btn.red:hover {
+    background: #ff0059;
+    color: #000;
+}
+
+.login-msg {
+    margin-top: 15px;
+    font-size: 0.6rem;
+}
+
+/* Server Siyahısı və Form Dizaynı */
+.search-bar {
+    width: 100%;
+    background: transparent;
+    border: 2px solid #00ffcc;
+    color: #fff;
+    padding: 12px;
+    font-family: monospace;
+    font-size: 0.8rem;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    outline: none;
+    box-shadow: 0 0 10px rgba(0,255,204,0.3);
+}
+
+.server-list {
+    max-height: 350px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+    text-align: left;
+}
+
+.server-item {
+    background: #151525;
+    border: 2px solid #ff007f;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(255,0,127,0.3);
+}
+
+.server-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.server-flag {
+    width: 45px;
+    height: 30px;
+    object-fit: cover;
+    border: 1px solid #fff;
+}
+
+.server-details h3 {
+    font-size: 0.8rem;
+    color: #00ffcc;
+    margin-bottom: 5px;
+}
+
+.server-details a {
+    font-size: 0.6rem;
+    color: #ff007f;
+    text-decoration: none;
+}
+
+.server-details a:hover {
+    text-decoration: underline;
+}
+
+.add-server-form {
+    background: #12121f;
+    border: 2px dashed #00ffcc;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    text-align: left;
+}
+
+.add-server-form input {
+    width: 100%;
+    background: transparent;
+    border: 1px solid #00ffcc;
+    color: #fff;
+    padding: 8px;
+    margin-bottom: 10px;
+    font-size: 0.6rem;
+    font-family: monospace;
 }
