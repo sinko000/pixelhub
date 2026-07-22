@@ -1,3 +1,12 @@
-"scripts": {
-  "start": "node server.js"
+{
+  "name": "pixelhub",
+  "version": "1.0.0",
+  "description": "Pixel games web app",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
