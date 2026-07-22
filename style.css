@@ -1,0 +1,148 @@
+/* --- Ümumi Ayarlar --- */
+body {
+    background-color: #050509; /* Çox tünd mavi-qara fon */
+    color: #fff;
+    /* Piksel şrifti tətbiq olunur */
+    font-family: 'Press Start 2P', cursive; 
+    margin: 0;
+    padding: 20px;
+    display: flex;
+}
+
+/* --- Başlıq Dizaynı --- */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+    border-bottom: 2px solid #39ff14; /* Neon yaşıl xətt */
+    padding-bottom: 20px;
+}
+
+/* Glitch (Xətalı) Neon Effekti */
+.glitch {
+    position: relative;
+    color: #39ff14; /* Neon yaşıl */
+    font-size: 3rem;
+    text-shadow: 0 0 5px #39ff14, 0 0 20px #39ff14;
+}
+
+/* --- Neon Düymə Üslubu --- */
+.neon-btn {
+    background: transparent;
+    border: 2px solid #ff0059; /* Neon çəhrayı */
+    color: #ff0059;
+    font-family: 'Press Start 2P', cursive;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    /* İlkin kölgə effekti */
+    box-shadow: 0 0 5px #ff0059, inset 0 0 5px #ff0059;
+}
+
+.neon-btn.small {
+    padding: 5px 10px;
+    font-size: 0.8rem;
+}
+
+/* Hover (Siçan üzərinə gələndə) Effekti */
+.neon-btn:hover {
+    background: #ff0059;
+    color: #050509;
+    /* Daha güclü parıltı */
+    box-shadow: 0 0 20px #ff0059, 0 0 40px #ff0059, inset 0 0 10px #ff0059;
+}
+
+/* --- Oyun Grid Sistemi --- */
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+/* Oyun Kartı Üslubu (Piksel çərçivə) */
+.game-card {
+    background: #10101a;
+    border: 4px solid #7000ff; /* Neon bənövşəyi çərçivə */
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.game-card:hover {
+    transform: translateY(-10px); /* Yuxarı qalxma effekti */
+    border-color: #39ff14; /* Hoverdə yaşıl çərçivəyə dönür */
+}
+
+.game-card img {
+    max-width: 100%;
+    height: 150px;
+    object-fit: cover;
+    image-rendering: pixelated; /* Şəklin piksel keyfiyyətini qoruyur */
+    border: 2px solid #fff;
+    margin-bottom: 10px;
+}
+
+.game-card h3 {
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+
+/* --- Çat Dizaynı (Yan panel) --- */
+#chat-sidebar {
+    width: 300px;
+    background: #080812;
+    border-left: 2px solid #00ffff; /* Neon mavi */
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    position: fixed;
+    right: 0;
+    top: 0;
+}
+
+.chat-header {
+    background: #00ffff;
+    color: #050509;
+    padding: 15px;
+    text-align: center;
+}
+
+#chat-messages {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    font-size: 0.7rem;
+}
+
+.chat-input {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #00ffff;
+}
+
+#messageInput {
+    flex: 1;
+    background: transparent;
+    border: 1px solid #00ffff;
+    color: #fff;
+    padding: 5px;
+    font-family: monospace;
+}
+
+/* --- Responsive (Mobil üçün) --- */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+        padding-right: 20px;
+    }
+    #chat-sidebar {
+        width: 100%;
+        height: 300px;
+        position: relative;
+        border-left: none;
+        border-top: 2px solid #00ffff;
+        margin-top: 40px;
+    }
+    .glitch {
+        font-size: 1.5rem;
+    }
+}
