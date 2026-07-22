@@ -27,7 +27,6 @@ function checkAdminPassword() {
         msg.innerText = "Successfully joined as admin!";
         setTimeout(() => {
             closeAdminModal();
-            // Əgər hazırda Faction səhifəsindədirsə, yenilə ki, Add Server düyməsi görünsün
             if (currentPlatform === 'pixelplanet-faction') {
                 openFactionServers();
             }
@@ -64,11 +63,7 @@ function selectPlatform(platformName) {
     }
 }
 
-// Faction Serverləri Səhifəsi
-let servers = JSON.parse(localStorage.getItem('pixelplanet_servers')) || [
-    { name: "Alpha Empire", flag: "https://flagcdn.com/w320/us.png", discord: "https://discord.gg/example" }
-];
-
+// Serverləri backend-dən çəkib açmaq
 function openFactionServers() {
     currentPlatform = 'pixelplanet-faction';
     const container = document.getElementById('main-container');
@@ -94,7 +89,7 @@ function openFactionServers() {
         ${adminSection}
 
         <div class="server-list" id="serverListContainer">
-            <!-- Serverlər bura yüklənəcək -->
+            <p style="font-size:0.6rem; color:#888; text-align:center;">Loading servers...</p>
         </div>
 
         <div style="margin-top: 20px;">
@@ -102,7 +97,20 @@ function openFactionServers() {
         </div>
     `;
 
-    renderServers(servers);
+    fetchServers();
+}
+
+let allServers = [];
+
+// Backend-dən serverləri gətirən funksiya
+function fetchServers() {
+    fetch('/api/servers')
+        .then(response => response.json())
+        .then(data => {
+            allServers = data;
+            renderServers(allServers);
+        })
+        .catch(err => console.error('Error fetching servers:', err));
 }
 
 // Serverləri Ekrana Çıxarmaq
@@ -137,7 +145,7 @@ function renderServers(serversArray) {
     });
 }
 
-// Admin tərəfindən server əlavə etmək
+// Yeni server əlavə etmək (Backend-ə göndərir)
 function addServer() {
     const name = document.getElementById('serverName').value.trim();
     const flag = document.getElementById('serverFlag').value.trim();
@@ -148,28 +156,45 @@ function addServer() {
         return;
     }
 
-    servers.push({ name, flag, discord });
-    localStorage.setItem('pixelplanet_servers', JSON.stringify(servers));
-    renderServers(servers);
-
-    // Formu təmizlə
-    document.getElementById('serverName').value = '';
-    document.getElementById('serverFlag').value = '';
-    document.getElementById('serverDiscord').value = '';
+    fetch('/api/servers', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, flag, discord })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            allServers = data.servers;
+            renderServers(allServers);
+            // Formu təmizlə
+            document.getElementById('serverName').value = '';
+            document.getElementById('serverFlag').value = '';
+            document.getElementById('serverDiscord').value = '';
+        }
+    })
+    .catch(err => console.error('Error adding server:', err));
 }
 
-// Admin tərəfindən server silmək
+// Server silmək (Backend-dən silir)
 function deleteServer(index) {
     if (confirm("Are you sure you want to delete this server?")) {
-        servers.splice(index, 1);
-        localStorage.setItem('pixelplanet_servers', JSON.stringify(servers));
-        renderServers(servers);
+        fetch(`/api/servers/${index}`, {
+            method: 'DELETE'
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                allServers = data.servers;
+                renderServers(allServers);
+            }
+        })
+        .catch(err => console.error('Error deleting server:', err));
     }
 }
 
 // Axtarış funksiyası
 function filterServers() {
     const query = document.getElementById('searchInput').value.toLowerCase();
-    const filtered = servers.filter(s => s.name.toLowerCase().includes(query));
+    const filtered = allServers.filter(s => s.name.toLowerCase().includes(query));
     renderServers(filtered);
 }
