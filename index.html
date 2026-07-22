@@ -4,25 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pixel Games Hub</title>
-    <!-- Google Piksel Şrifti -->
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="welcome-container">
-        <!-- Tam Mərkəzdə Xoş Gəldin Yazısı -->
-        <h1 class="neon-title" data-text="WELCOME TO PIXEL HUB">WELCOME TO PIXEL HUB</h1>
-        
-        <!-- Axtarışa Başla düyməsi və ya başlıq -->
-        <p class="subtitle">CHOOSE A PLATFORM TO START SEARCHING</p>
+    <!-- Sağ Üst Küncdə Admin Giriş Düyməsi -->
+    <div class="admin-login-corner">
+        <button class="admin-icon-btn" onclick="openAdminModal()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 0 0-7.5 16.68L4 20l1.32-.5A10 10 0 1 0 12 2z"></path><path d="M12 8v4"></path><path d="M12 16h.01"></path></svg>
+            Admin
+        </button>
+    </div>
 
-        <!-- 4 Əsas Seçənək (Kнопка / Kart şəklində) -->
+    <!-- Əsas Kontent Konteyneri -->
+    <div class="welcome-container" id="main-container">
+        <h1 class="neon-title">WELCOME TO PIXEL HUB</h1>
+        <p class="subtitle">CHOOSE A PLATFORM TO START SEARCHING</p>
+        
         <div class="options-grid">
             <button class="neon-option-btn" onclick="selectPlatform('pixelplanet')">pixelplanet.fun</button>
             <button class="neon-option-btn" onclick="selectPlatform('pixuniverse')">pixuniverse</button>
             <button class="neon-option-btn" onclick="selectPlatform('pixmap')">pixmap</button>
             <button class="neon-option-btn" onclick="selectPlatform('pixelya')">pixelya</button>
+        </div>
+    </div>
+
+    <!-- Admin Giriş Modalı (Popup) -->
+    <div id="adminModal" class="modal">
+        <div class="modal-content">
+            <h2>ADMIN LOGIN</h2>
+            <input type="password" id="adminPasswordInput" placeholder="Enter password...">
+            <div class="modal-buttons">
+                <button class="neon-btn small" onclick="checkAdminPassword()">Login</button>
+                <button class="neon-btn small red" onclick="closeAdminModal()">Close</button>
+            </div>
+            <p id="loginMessage" class="login-msg"></p>
         </div>
     </div>
 
